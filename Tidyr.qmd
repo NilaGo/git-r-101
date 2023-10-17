@@ -2,8 +2,12 @@
 title: "TidyR"
 author: "Nila Gobiraj"
 format: html
+execute: 
+  keep-md: true
 ---
+
 # tidyr and ggplot
+
 ```{r}
 #| message : false
 library(here)
@@ -15,27 +19,31 @@ here::i_am("git-r-101.Rproj")
 ```
 
 ## Multiple lines on a single graph
-```{r}
+
+```{r dax stock}
 eustock<-as.data.frame(EuStockMarkets)
 eustock<-eustock |>mutate(time=1:n())
 ggplot(eustock,aes(time,y=DAX))+
   geom_line()
 ```
-```{r}
+
+```{r cac stock}
 ggplot(eustock,aes(time,y=CAC))+
   geom_line()
 ```
+
 ### wrong solution
-```{r}
+
+```{r cac dac wrong}
 ggplot(eustock,aes(time,y=DAX))+
   geom_line()+
   geom_line(mapping=aes(y=CAC,color="red"))
 ```
-Problem:
--y axis name is wrong
-- colors must be speicified manually
-- we miss an association between colors and names 
+
+Problem: -y axis name is wrong - colors must be speicified manually - we miss an association between colors and names
+
 ### tidyr based solution
+
 ```{r}
 long_eustock <-
   eustock|>pivot_longer(-time,names_to="Stock Index",values_to="Value")
@@ -45,10 +53,10 @@ long_eustock <-
 ggplot(long_eustock,aes(x=time , y=Value ,group=`Stock Index`,color=`Stock Index`))+
   geom_line()
 ```
+
 ```{r}
 #| fig.height = 15
 ggplot(long_eustock,aes(x=time , y=Value ))+
   geom_line()+
   facet_wrap(~`Stock Index`,ncol=1 ,scales="free_y")
 ```
-

@@ -7,7 +7,9 @@ execute:
 ---
 
 
+
 # tidyr and ggplot
+
 
 ::: {.cell}
 
@@ -64,6 +66,7 @@ here() starts at /Users/nila/M1 S1/Data Management and Programming/git-r-101
 
 ## Multiple lines on a single graph
 
+
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -74,7 +77,7 @@ ggplot(eustock,aes(time,y=DAX))+
 ```
 
 ::: {.cell-output-display}
-![](Tidyr_files/figure-html/unnamed-chunk-2-1.png){width=672}
+![](Tidyr_files/figure-html/dax stock-1.png){width=672}
 :::
 :::
 
@@ -86,11 +89,13 @@ ggplot(eustock,aes(time,y=CAC))+
 ```
 
 ::: {.cell-output-display}
-![](Tidyr_files/figure-html/unnamed-chunk-3-1.png){width=672}
+![](Tidyr_files/figure-html/cac stock-1.png){width=672}
 :::
 :::
 
+
 ### wrong solution
+
 
 ::: {.cell}
 
@@ -101,15 +106,15 @@ ggplot(eustock,aes(time,y=DAX))+
 ```
 
 ::: {.cell-output-display}
-![](Tidyr_files/figure-html/unnamed-chunk-4-1.png){width=672}
+![](Tidyr_files/figure-html/cac dac wrong-1.png){width=672}
 :::
 :::
 
-Problem:
--y axis name is wrong
-- colors must be speicified manually
-- we miss an association between colors and names 
+
+Problem: -y axis name is wrong - colors must be speicified manually - we miss an association between colors and names
+
 ### tidyr based solution
+
 
 ::: {.cell}
 
@@ -127,7 +132,7 @@ ggplot(long_eustock,aes(x=time , y=Value ,group=`Stock Index`,color=`Stock Index
 ```
 
 ::: {.cell-output-display}
-![](Tidyr_files/figure-html/unnamed-chunk-6-1.png){width=672}
+![](Tidyr_files/figure-html/unnamed-chunk-3-1.png){width=672}
 :::
 :::
 
@@ -140,6 +145,6 @@ ggplot(long_eustock,aes(x=time , y=Value ))+
 ```
 
 ::: {.cell-output-display}
-![](Tidyr_files/figure-html/unnamed-chunk-7-1.png){width=672}
+![](Tidyr_files/figure-html/unnamed-chunk-4-1.png){width=672}
 :::
 :::
