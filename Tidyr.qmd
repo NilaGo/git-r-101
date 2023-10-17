@@ -1,0 +1,16 @@
+---
+title: "TidyR"
+author: "Nila Gobiraj"
+format: html
+---
+#tidyr and ggplot
+```{r}
+#| message : false
+library(here)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+here::i_am("git-r-101.Rproj")
+
+```
+
